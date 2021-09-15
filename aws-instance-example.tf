@@ -7,7 +7,10 @@ resource "aws_instance" "web1" {
    iam_instance_profile =   "myManagedInstanceRole"
    user_data = <<-EOF
 		#!/bin/bash
-      sudo yum install -y awslogs
-      sudo systemctl start awslogsd
+      sudo amazon-linux-extras install ansible2 -y
+      sudo yum install git -y
+      git clone https://github.com/Abishek-Ravichander/Ansible-playbook.git
+      cd Ansible-playbook
+      ansible-playbook apache.yml -f 10
       EOF
    }
