@@ -1,6 +1,6 @@
 ---
-- hosts: webservers 
-  become: True
+- hosts: localhost 
+  connection: local
   tasks:
     - name: Install packages
       yum:
